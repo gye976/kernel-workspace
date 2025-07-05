@@ -1,25 +1,9 @@
 #!/bin/bash
 
-if [ "$#" -lt 1 ]; then
-	echo "arg err" >&2
-	exit 1
-fi
+source util.sh
 
-if [ "$1" = "mainline" ]; then
-	LINUX="linux"
-	OUTPUT="output"
-else 
-	LINUX="linux-$1"
-	OUTPUT="output-$1"
-
-	if [ ! -d "$LINUX" ]; then
-		echo "invalide linux dir" >&2
-		exit 1
-	fi
-fi
+set_kernel_tree $1
 shift
-
-echo "${LINUX}, ${OUTPUT}"
 
 PATH=/usr/lib/ccache:${PATH}
 
