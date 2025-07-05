@@ -11,13 +11,13 @@ if [ "$1" = "mainline" ]; then
 else 
 	LINUX="linux-$1"
 	OUTPUT="output-$1"
-	shift
 
 	if [ ! -d "$LINUX" ]; then
 		echo "invalide linux dir" >&2
 		exit 1
 	fi
 fi
+shift
 
 echo "${LINUX}, ${OUTPUT}"
 
