@@ -13,6 +13,11 @@ ODIR=$PWD/${OUTPUT}
 
 echo "$@"
 
-make -C ${KDIR} O=${ODIR} CC=clang -j8 \
-        "$@"
+source env.txt
 
+if [ ! -z "${_ARCH}" ]; then
+	exit 1
+fi
+
+make -C ${KDIR} O=${ODIR} CC=${_CC} ARCH=${_ARCH} CROSS_COMPILE=${_CROSS} -j8 \
+        "$@"
