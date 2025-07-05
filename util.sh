@@ -1,6 +1,10 @@
 set_kernel_tree() {
+	if [ ! -z "${TARGET}" ]; then
+		return 0
+	fi
+
 	if [ ! "$#" -eq 1 ]; then
-		echo "arg err" >&2
+		echo "arg cnt err" >&2
 		exit 1
 	fi
 
@@ -14,7 +18,7 @@ set_kernel_tree() {
 		OUTPUT="output-$1"
 
 		if [ ! -d "$LINUX" ]; then
-			echo "invalide linux dir" >&2
+			echo "invalide linux dir, ${LINUX}" >&2
 			exit 1
 		fi
 	fi
