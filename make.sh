@@ -15,7 +15,7 @@ echo "$@"
 
 source env.txt
 
-if [ ! -z "${_ARCH}" ]; then
+if [ -z "${_ARCH}" ]; then
 	exit 1
 fi
 
